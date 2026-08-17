@@ -12,7 +12,7 @@ Return exactly two consecutive parts:
 ```careertown
 {
   "schema_version": 1,
-  "skill": "experience-curator",
+  "skill": "resume-composer",
   "generated_at": "2026-08-13T10:00:00Z",
   "records": [
     {

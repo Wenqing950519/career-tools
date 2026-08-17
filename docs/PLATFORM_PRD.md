@@ -31,7 +31,7 @@
 | ④ 投哪裡 | 「履歷有了，我要去哪找實習／競賽」 | **opportunity-catch** | 純 skill（職缺 + 競賽雙模式） | 排序過、附理由的機會清單 |
 | ⑤ 該不該去 | 「我拿到 offer 了，但不知道該不該去，還是要快逃」 | **offercheck** | 純 skill（已完成） | 背調 + 取捨的 HTML 報告 |
 
-**支線（不上平台首頁，方法論保留）：** direction-explorer、experience-curator（精華併入 resume-composer 引導流程）、interview-story、opportunity-review（由 opportunity-catch 的篩選模式取代）。
+**已收斂掉的 skill：** direction-explorer（方法論改由 career-test 結果頁以前端規則實作）、experience-curator（訪談方法併入 resume-composer 的 standalone 模式）、opportunity-review（由 opportunity-catch 的篩選階段取代）、interview-story（產出形態是口說，不適合本平台的可截圖產出原則）。四者已自本庫移除，內容留在 git 歷史中。
 
 ## 4. 端到端驗收情境（唯一的完成標準）
 
@@ -64,14 +64,14 @@ lisheng.cv/career-tools（統一入口，靜態）
 ├─ ④ opportunity-catch  skill（跑在使用者自己的 Claude/ChatGPT，用其 web search）
 └─ ⑤ offercheck         skill（已完成，含 HTML 報告）
 
-獨立 v2 專案（不擋平台上線）：
-- 職缺爬蟲服務（104 provider，參考 boss-zhipin-scraper 思路）
-- 競賽爬蟲服務（BHuntr + WebDiscovery，見 opportunity-catch PRD 附錄）
+獨立 feed 服務（Wave 6、7，不擋前五波）：
+- 競賽 feed（BHuntr + WebDiscovery，見 opportunity-catch PRD 附錄）
+- 職缺 feed（JobProvider 介面 + 104／Yourator／CakeResume）
 ```
 
 **架構原則：**
 1. 全平台只有 skill-gap v1 一個有後端。其他一律靜態 + skill，寫完就結束、不需維運。
-2. 爬蟲不在 v1。抓取靠使用者自己的 AI（web search），平台零維運成本；爬蟲服務做好後再接進 opportunity-catch 當升級。
+2. 抓取預設靠使用者自己的 AI（web search），平台零維運成本。feed 服務完成後接進 opportunity-catch 當升級：skill 偵測到 feed 可用就優先讀，不可用則退回網頁搜尋，介面不變、使用者無感，服務中斷也不會壞。
 3. 狀態存在瀏覽器（localStorage）。跨階段傳遞用「一鍵複製上一步結果」+「貼回」，不做帳號同步（skill-gap v1 除外）。
 
 ## 6. 跨階段資料流
@@ -131,7 +131,7 @@ lisheng.cv/career-tools（統一入口，靜態）
 
 ## 10. Governance（全產品共同遵守）
 
-沿用 `skills/_shared/governance.md` 八條，對使用者的呈現方式：
+沿用 [`contracts/governance.md`](../contracts/governance.md) 八條，對使用者的呈現方式：
 
 - AI 不編造任何數字、頭銜、規模——這是平台的招牌，行銷素材直接打這點
 - 推論一律標示「這是從你哪句話推論的」

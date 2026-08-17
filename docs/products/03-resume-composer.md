@@ -2,13 +2,13 @@
 
 **形態**：純 skill（貼到任何 LLM 觸發）＋ 單頁履歷 HTML（自訂版面、匯出 PDF）
 **階段**：怎麼寫出來 ／「我做過一些事，但不會寫成履歷」
-**架構重量**：零後端；renderer 基底已存在（`简历生成器-原木优化.html`，6208 行）
+**架構重量**：零後端。實作於 [`apps/resume/index.html`](../../apps/resume/index.html)
 
 ## 目的
 
 兩段式閉環：
 
-1. **Skill 端（在使用者的 ChatGPT/Claude 裡）**：引導使用者把模糊經歷（「幫忙處理系上活動」）變成可量化、**不編造**的履歷語言。併入 `experience-curator` 的精華：先問「你實際做了什麼、哪部分是你自己做的、有沒有任何可數的東西」，才動筆改寫。
+1. **Skill 端（在使用者的 ChatGPT/Claude 裡）**：引導使用者把模糊經歷（「幫忙處理系上活動」）變成可量化、**不編造**的履歷語言。併入已收斂的 experience-curator 的精華：先問「你實際做了什麼、哪部分是你自己做的、有沒有任何可數的東西」，才動筆改寫。
 2. **HTML 端（瀏覽器）**：把 AI 產出貼進來 → 自動長成排版好的履歷 → 自訂版面 → 匯出 PDF。
 
 **使用者的完整動線**：複製觸發內容 → 貼到 AI → 對話幾輪 → 全選複製 AI 最後一則回覆 → 貼進履歷頁的匯入框 → 履歷出現 → 微調 → 下載 PDF。
@@ -16,11 +16,11 @@
 ## Skill 端規格
 
 ### 基底
-沿用 `skills/resume-composer/`（SKILL.md、governance、output-contract、schema 均已存在）。
+沿用 [career-resume-composer](https://github.com/Wenqing950519/career-resume-composer)（SKILL.md、governance、interview-method、output-contract、schema 與驗證器均已完成）。
 
 ### 要改的三件事
 
-1. **鬆綁 sourceId 前置條件**。現行 contract 要求每段經歷有 confirmed sourceId（為 Career Town 匯入設計）。平台版沒有 confirmed 資料庫，改為：skill 內建 experience-curator 式的訪談引導，在對話中完成「使用者確認」——AI 改寫後必須問「這樣寫有沒有超過事實？」，使用者說沒有，該段才進最終輸出。`sourceId` 改為對話內自生的 `chat-1`、`chat-2`。
+1. **鬆綁 sourceId 前置條件**。現行 contract 要求每段經歷有 confirmed sourceId（為 Career Town 匯入設計）。平台版沒有 confirmed 資料庫，改為：skill 內建訪談引導，在對話中完成「使用者確認」——AI 改寫後必須問「這樣寫有沒有超過事實？」，使用者說沒有，該段才進最終輸出。`sourceId` 改為對話內自生的 `chat-1`、`chat-2`。
 2. **輸出雙格式**：先繁中散文（給人看、確認用），最後一個 ```careertown JSON block（給 HTML 匯入用，結構見下）。此順序已是現行 contract，不變。
 3. **量化紀律具體化**（寫進 references/）：
    - 有可數的東西 → 問到數字（幾人、幾週、幾篇、多少預算）
