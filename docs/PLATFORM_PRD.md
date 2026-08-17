@@ -90,9 +90,9 @@ lisheng.cv/career-tools（統一入口，靜態）
 | 波次 | 內容 | 依賴 | 狀態 |
 |---|---|---|---|
 | Wave 1 | resume-composer 履歷 HTML 打通（匯入 + 繁化 + 下一步導引） | 無，renderer 已存在 | ✅ 完成 |
-| Wave 2 | opportunity-catch 上線頁（prompt 產生器） | 無 | |
-| Wave 3 | 入口頁改版為五階段路徑，掛上 1-5（skill-gap 掛 v0） | Wave 1、2 | |
-| Wave 4 | skill-gap v0（prompt 產生器 + 能力地圖前端渲染） | 無後端 | |
+| Wave 2 | opportunity-catch 上線頁（prompt 產生器） | 無 | ✅ 完成 |
+| Wave 3 | 入口頁改版為五階段路徑，掛上 1-5（skill-gap 掛 v0） | Wave 1、2 | ✅ 完成 |
+| Wave 4 | skill-gap v0（prompt 產生器 + 能力地圖前端渲染） | 無後端 | ✅ 完成 |
 | Wave 5 | skill-gap v1（LLM API + Google 登入 + DB） | Wave 4 | |
 | Wave 6 | 獨立專案：競賽 feed 服務 | 不擋前五波 | |
 | Wave 7 | 獨立專案：職缺 feed 服務 | Wave 6 的架構可複用 | |

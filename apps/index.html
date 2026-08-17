@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Tools｜給大學生的求職工具箱</title>
+<meta name="description" content="從「我大三了，還不知道自己想做什麼」，走到「有依據地決定該不該去」。不用安裝、不用註冊，會複製貼上就會用。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/platform.css">
+<style>
+    .lead { padding: 4rem 0 2.5rem; text-align: center; }
+    .lead h1 { font-size: 2.15rem; line-height: 1.45; margin-bottom: 1.1rem; }
+    .lead h1 em { font-style: normal; color: var(--accent-dark); }
+    .lead p { color: var(--text-muted); font-size: 0.98rem; max-width: 540px; margin: 0 auto; }
+    .lead-tags { margin-top: 1.4rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+    .lead-tag { font-size: 0.78rem; color: var(--text-muted); background: var(--bg-panel); border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.85rem; }
+    @media (max-width: 620px) { .lead h1 { font-size: 1.65rem; } }
+
+    .ask { text-align: center; margin: 2.5rem 0 1.5rem; }
+    .ask h2 { font-size: 1.25rem; }
+    .ask p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+    .steps { display: grid; gap: 0.85rem; }
+
+    .step {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 1.1rem;
+        align-items: center;
+        background: var(--bg-panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.25rem 1.4rem;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.16s;
+        position: relative;
+    }
+    .step:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(90,138,94,0.1); }
+    .step.suggested { border-color: var(--accent); background: rgba(122,168,112,0.07); }
+
+    .step-num {
+        width: 2.1rem; height: 2.1rem; border-radius: 50%;
+        border: 1px solid var(--border); color: var(--text-muted);
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Noto Serif TC', serif; font-size: 0.92rem; flex-shrink: 0;
+    }
+    .step.done .step-num { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    .step-quote { font-family: 'Noto Serif TC', serif; font-size: 1.06rem; font-weight: 600; margin-bottom: 0.3rem; line-height: 1.5; }
+    .step-what { font-size: 0.84rem; color: var(--text-muted); }
+    .step-out { font-size: 0.79rem; color: var(--text-light); margin-top: 0.25rem; }
+    .step-go { font-size: 0.84rem; color: var(--accent-dark); white-space: nowrap; }
+
+    .step-flag {
+        position: absolute; top: -0.6rem; left: 1.2rem;
+        font-size: 0.7rem; background: var(--accent); color: #fff;
+        padding: 0.12rem 0.6rem; border-radius: 999px;
+    }
+    .step-done-note { position: absolute; top: -0.6rem; right: 1.2rem; font-size: 0.7rem; background: var(--bg-cream); border: 1px solid var(--border); color: var(--text-muted); padding: 0.12rem 0.6rem; border-radius: 999px; }
+
+    @media (max-width: 620px) {
+        .step { grid-template-columns: auto 1fr; padding: 1.1rem; }
+        .step-go { grid-column: 2; text-align: right; }
+    }
+
+    .thread { text-align: center; font-size: 0.86rem; color: var(--text-muted); margin: 1.5rem 0 0; }
+    .thread b { color: var(--text-main); }
+
+    .promise { margin: 3.5rem 0 0; }
+    .promise h2 { text-align: center; font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .promise-lead { text-align: center; font-size: 0.86rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .proof { margin-top: 1rem; }
+    .proof-note { font-size: 0.8rem; color: var(--text-light); margin-top: 0.7rem; line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+    <section class="lead">
+        <h1>從「我不知道自己想做什麼」<br>走到<em>「我知道該不該去」</em></h1>
+        <p>給大學生的求職工具箱。測傾向、盤能力、寫履歷、找機會、評 offer，五步各自能用，也接得起來。</p>
+        <div class="lead-tags">
+            <span class="lead-tag">不用安裝</span>
+            <span class="lead-tag">不用註冊</span>
+            <span class="lead-tag">資料留在你的瀏覽器</span>
+            <span class="lead-tag">會複製貼上就會用</span>
+        </div>
+    </section>
+
+    <section>
+        <div class="ask">
+            <h2>你現在卡在哪裡？</h2>
+            <p>認出哪一句是你，就從那裡開始。</p>
+        </div>
+
+        <div class="steps" id="steps"></div>
+
+        <p class="thread"><b>每一步的產出都接得上下一步。</b>從哪裡開始都可以。</p>
+    </section>
+
+    <section class="promise">
+        <h2>這裡的 AI 有三條規矩</h2>
+        <p class="promise-lead">不是文案，是寫進每個工具裡的硬性規則。</p>
+
+        <div class="rules">
+            <div class="rule">
+                <strong>不會幫你編造任何數字</strong>
+                <span>問不出來的，它會反問你，而不是幫你掰一個看起來合理的。你能捍衛的質性句子，勝過你答不出來的漂亮數字。</span>
+            </div>
+            <div class="rule">
+                <strong>不會給你「你適合當 XX」的判決</strong>
+                <span>沒有適合度百分比、沒有人格類型、不對你打分數。只給你可以驗證的下一步。</span>
+            </div>
+            <div class="rule">
+                <strong>每個結論都說得出「是從你哪句話推論的」</strong>
+                <span>自評、證據、市場要求分成三條線，不互相代填。沒有證據不會降低你的自評，只表示履歷還不能引用那一項。</span>
+            </div>
+        </div>
+
+        <div class="proof">
+            <div class="compare">
+                <div class="compare-col before">
+                    <div class="compare-tag">一般 AI 幫你潤色後</div>
+                    <div class="compare-text">主導系上大型活動，帶領 5 人團隊完成整體規劃，報名轉換率提升 30%，成效顯著。</div>
+                    <div class="compare-text" style="margin-top:0.8rem;color:var(--text-light);font-size:0.78rem">→ 面試官問「那個 30% 怎麼算的」，你答不出來。</div>
+                </div>
+                <div class="compare-col after">
+                    <div class="compare-tag">這裡的工具寫出來</div>
+                    <div class="compare-text">與兩位同學共同籌辦系上迎新活動，個人負責活動文案與報名表單的設計及維護，最終收得 130 餘筆報名。場地與預算由其他夥伴負責。</div>
+                    <div class="compare-text" style="margin-top:0.8rem;color:var(--accent-dark);font-size:0.78rem">→ 每個數字都是你說得出來源的，每一句都問得下去。</div>
+                </div>
+            </div>
+            <p class="proof-note">
+                左邊不是虛構的。履歷生成器原本內建三個「一鍵潤色」功能，會憑空生出「提升約 20%」「修復核心缺陷 20 餘項」「帶領 5 人團隊」，
+                還會把你寫的「協助」改成「主導」。那些功能已經全部移除了。
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer class="foot">
+    <div class="wrap">
+        Made by <a href="https://lisheng.cv" target="_blank" rel="noopener">Li-Sheng</a> ·
+        <a href="https://github.com/Wenqing950519/career-tools" target="_blank" rel="noopener">GitHub</a>
+        <div style="margin-top:0.5rem"><button class="btn" style="font-size:0.76rem;padding:0.4rem 0.9rem" onclick="clearProgress()">清除本機進度</button></div>
+    </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STEPS = [
+    {
+        n: '①', key: 'quiz',
+        quote: '我大三了，還不知道自己想做什麼',
+        what: '15 題情境測驗，找出值得看看的方向',
+        out: '產出：2–4 張方向卡',
+        go: '開始測驗',
+        href: 'https://career-test.lisheng.cv/'
+    },
+    {
+        n: '②', key: 'skillgap',
+        quote: '我大概知道方向，但不知道自己有什麼',
+        what: '盤點你的能力精熟度，標出跟目標的差距',
+        out: '產出：一張能力地圖 + 先補哪三項',
+        go: '盤點能力',
+        href: 'skill-gap/index.html'
+    },
+    {
+        n: '③', key: 'resume',
+        quote: '我做過一些事，但不會寫成履歷',
+        what: 'AI 引導你把經歷寫成可量化、不唬爛的句子',
+        out: '產出：一份可匯出 PDF 的履歷',
+        go: '開始寫履歷',
+        href: 'resume/index.html'
+    },
+    {
+        n: '④', key: 'opportunity',
+        quote: '履歷有了，我要去哪找實習／競賽',
+        what: '依你的方向抓還沒截止的機會並排序',
+        out: '產出：附理由與截止日的機會清單',
+        go: '去找機會',
+        href: 'opportunity-catch/index.html'
+    },
+    {
+        n: '⑤', key: 'offercheck',
+        quote: '我拿到 offer 了，該去嗎，還是快逃',
+        what: '背調公司、重建你實際會做的工作',
+        out: '產出：一份有證據的 offer 評估報告',
+        go: '評估 offer',
+        href: 'https://github.com/Wenqing950519/career-offercheck'
+    }
+];
+
+function readProgress() {
+    const done = {};
+    try {
+        const p = JSON.parse(localStorage.getItem('ct_progress') || '{}');
+        // 各頁自己寫的進度
+        if (p.skillgap && p.skillgap.count > 0) done.skillgap = `已確認 ${p.skillgap.count} 項能力`;
+        if (p.opportunity) done.opportunity = '看過';
+        // 直接檢查各工具留下的資料，比另外記一份進度可靠
+        if (JSON.parse(localStorage.getItem('ct_result') || 'null')) done.quiz = '已完成測驗';
+        const hist = JSON.parse(localStorage.getItem('resume_history') || '[]');
+        const draft = JSON.parse(localStorage.getItem('resume_draft') || 'null');
+        if ((Array.isArray(hist) && hist.length) || draft) done.resume = '有存過履歷';
+    } catch (e) { /* 隱私模式或損壞資料：當作沒有進度即可 */ }
+    return done;
+}
+
+function render() {
+    const done = readProgress();
+    // 建議下一步 = 第一個還沒做過的階段
+    const nextKey = (STEPS.find(s => !done[s.key]) || {}).key;
+
+    document.getElementById('steps').innerHTML = STEPS.map(s => {
+        const isDone = !!done[s.key];
+        const isNext = s.key === nextKey && Object.keys(done).length > 0;
+        const ext = s.href.startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+        return `<a class="step ${isDone ? 'done' : ''} ${isNext ? 'suggested' : ''}" href="${s.href}"${ext}>
+            ${isNext ? '<span class="step-flag">建議下一步</span>' : ''}
+            ${isDone ? `<span class="step-done-note">${done[s.key]}</span>` : ''}
+            <div class="step-num">${isDone ? '✓' : s.n}</div>
+            <div>
+                <div class="step-quote">「${s.quote}」</div>
+                <div class="step-what">${s.what}</div>
+                <div class="step-out">${s.out}</div>
+            </div>
+            <div class="step-go">${s.go} →</div>
+        </a>`;
+    }).join('');
+}
+
+function clearProgress() {
+    if (!confirm('這會清掉這個瀏覽器裡的測驗結果、能力地圖與履歷草稿，確定嗎？')) return;
+    ['ct_progress', 'ct_result', 'sg_map', 'resume_history', 'resume_draft', 'resume_photo_latest']
+        .forEach(k => { try { localStorage.removeItem(k); } catch (e) {} });
+    render();
+    const t = document.getElementById('toast');
+    t.textContent = '已清除';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抓機會｜Career Tools</title>
+<meta name="description" content="依你的方向找出還沒截止的實習、職缺或學生競賽，排序並說明每一個為什麼適合你。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/platform.css">
+<style>
+    .mode-note { font-size: 0.8rem; color: var(--text-light); margin-top: 0.5rem; }
+    .checklist { display: grid; gap: 0.7rem; counter-reset: c; }
+    .check {
+        background: var(--bg-panel); border: 1px solid var(--border);
+        border-radius: 12px; padding: 1rem 1.15rem 1rem 3.1rem; position: relative;
+    }
+    .check::before {
+        counter-increment: c; content: counter(c);
+        position: absolute; left: 1.1rem; top: 1.05rem;
+        width: 1.5rem; height: 1.5rem; border-radius: 50%;
+        background: var(--accent); color: #fff;
+        font-size: 0.78rem; display: flex; align-items: center; justify-content: center;
+    }
+    .check strong { display: block; font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .check span { font-size: 0.84rem; color: var(--text-muted); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 620px) { .field-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <a class="brand" href="../index.html">Career<span> Tools</span></a>
+        <div class="topbar-step">第 4 步 · 抓機會</div>
+    </div>
+</header>
+
+<main class="wrap">
+
+    <section class="hero">
+        <div class="eyebrow">投哪裡</div>
+        <h1>履歷有了，然後呢？</h1>
+        <p>
+            你打開 104，兩千筆職缺。你滑了半小時，存了五個，然後關掉分頁，因為你不知道哪個值得投、
+            哪個是坑、哪個其實上禮拜就截止了。
+        </p>
+    </section>
+
+    <!-- 免費就給完的價值：先讓人看到差別，再談工具 -->
+    <section class="section">
+        <h2>問題不在找不到，在不知道哪個適合你</h2>
+        <p class="section-lead">同一個需求，你自己問 AI 跟這裡幫你生的問法，拿到的東西差在這裡。</p>
+
+        <div class="compare">
+            <div class="compare-col before">
+                <div class="compare-tag">你原本會這樣問</div>
+                <div class="compare-text">有什麼行銷實習可以投？</div>
+                <div class="compare-text" style="margin-top:0.9rem;color:var(--text-light);font-size:0.79rem">
+                    → 拿到一份誰都適用的清單，一半過期，沒有連結，
+                    也沒有任何一句話跟你有關。
+                </div>
+            </div>
+            <div class="compare-col after">
+                <div class="compare-tag">這裡幫你生出來的問法</div>
+                <div class="compare-text">我是政大新聞系大三，獨立經營系學會粉專三個學期（200 餘人成長至近 900 人），共同籌辦迎新活動負責文案與報名流程（130 餘筆報名）。想找台北的數位行銷實習，學期間每週最多到班兩天。
+
+請搜尋目前公開招募中的職缺，丟掉已截止的，依我的硬條件過濾並說明濾掉什麼，排序時每一項都要指出對應我哪一段經歷。</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>它嚴格遵守的六條</h2>
+        <p class="section-lead">這些規則寫在 skill 裡，不是說說而已。</p>
+
+        <div class="checklist">
+            <div class="check">
+                <strong>過期的一律不列</strong>
+                <span>查不到截止日的標「⚠️ 未確認」。寧可少列，也不列一個你點進去發現上禮拜就結束的機會。</span>
+            </div>
+            <div class="check">
+                <strong>發現與查證分開</strong>
+                <span>聚合平台用來「找到」，截止日與資格必須回官方確認。每個欄位會標明來自官方還是聚合站。</span>
+            </div>
+            <div class="check">
+                <strong>不編造機會</strong>
+                <span>每一筆都有你點得開的連結。真的搜不到就直說，不會為了湊數量生一個出來。</span>
+            </div>
+            <div class="check">
+                <strong>排序理由必須引用你的話</strong>
+                <span>「排第 1 因為你提到粉專從 200 到 900，這個職缺主要工作就是社群經營」。不給適合度分數、不給百分比。</span>
+            </div>
+            <div class="check">
+                <strong>硬條件才淘汰，偏好只影響排序</strong>
+                <span>地點、資格不符的直接濾掉並告訴你濾掉幾個、依據什麼規則。「想要遠端」這種偏好只會讓它排後面，不會消失。</span>
+            </div>
+            <div class="check">
+                <strong>先淺後深</strong>
+                <span>先列 8–12 個候選，等你挑出有興趣的 2–3 個，才去翻官方頁面和簡章 PDF。不浪費時間查你根本不會投的。</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 放最後 -->
+    <section class="section" id="generator">
+        <h2>產生你的問法</h2>
+        <p class="section-lead">填幾格，右邊會即時長出完整的問法。複製後貼到 ChatGPT 或 Claude 就好。</p>
+
+        <div class="gen">
+            <div class="gen-form">
+                <div class="field">
+                    <label>你要找的是</label>
+                    <div class="chips" id="mode-chips">
+                        <button class="chip active" data-mode="job" onclick="pickMode(this)">實習／職缺</button>
+                        <button class="chip" data-mode="comp" onclick="pickMode(this)">競賽</button>
+                    </div>
+                    <div class="mode-note" id="mode-note">會搜尋 104、Yourator、CakeResume 等公開職缺頁。</div>
+                </div>
+
+                <div class="field">
+                    <label>你的背景與做過的事</label>
+                    <div class="help">已經做過履歷了？直接把「複製求職摘要」的內容貼進來。沒有也沒關係，用講的就好。</div>
+                    <textarea id="f-background" rows="6" placeholder="例如：政大新聞系大三。獨立經營系學會粉專三個學期，追蹤數從 200 多到接近 900，每週約兩篇。籌辦過系上迎新，我負責文案跟報名表單，收到 130 幾筆報名。"></textarea>
+                </div>
+
+                <div class="field">
+                    <label id="lbl-intent">想找什麼方向</label>
+                    <input type="text" id="f-intent" placeholder="例如：數位行銷、社群經營相關實習">
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label id="lbl-loc">地點限制</label>
+                        <input type="text" id="f-location" placeholder="例如：台北，或可遠端">
+                    </div>
+                    <div class="field">
+                        <label>你的身分</label>
+                        <input type="text" id="f-status" placeholder="例如：大三在學，非應屆">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>其他硬條件</label>
+                    <div class="help">不能妥協的才寫這裡。「希望有」的寫在上面方向那欄就好。</div>
+                    <input type="text" id="f-hard" placeholder="例如：學期間每週最多到班兩天">
+                </div>
+            </div>
+
+            <div class="gen-preview">
+                <div class="gen-preview-head">
+                    <span>會複製出去的內容</span>
+                    <span id="char-count">0 字</span>
+                </div>
+                <pre id="preview"></pre>
+                <button class="btn btn-primary btn-block" style="margin-top:0.9rem" onclick="copyPrompt()">複製</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="nextstep">
+        <h3>拿到清單之後</h3>
+        <p id="next-desc">挑幾個投出去。等你拿到 offer，第 5 步的「選 offer」會幫你背調公司、判斷該不該去。</p>
+        <a class="btn" id="next-link" href="https://github.com/Wenqing950519/career-offercheck" target="_blank" rel="noopener">看第 5 步：選 offer</a>
+    </div>
+
+</main>
+
+<footer class="foot">
+    <div class="wrap">
+        Career Tools 第 4 步 ·
+        <a href="../index.html">回到五個階段</a> ·
+        <a href="https://github.com/Wenqing950519/career-opportunity-catch" target="_blank" rel="noopener">Skill 原始碼</a>
+    </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SKILL_URL = 'https://github.com/Wenqing950519/career-opportunity-catch';
+let mode = 'job';
+
+const MODE_COPY = {
+    job: {
+        note: '會搜尋 104、Yourator、CakeResume 等公開職缺頁。',
+        intentLabel: '想找什麼方向',
+        locLabel: '地點限制',
+        next: '挑幾個投出去。等你拿到 offer，第 5 步的「選 offer」會幫你背調公司、判斷該不該去。',
+        nextBtn: '看第 5 步：選 offer'
+    },
+    comp: {
+        note: '主要來源是 BHuntr 獎金獵人，另以搜尋補政府與校園的長尾。',
+        intentLabel: '想找什麼類型的競賽',
+        locLabel: '地點或形式限制',
+        next: '把報名截止日記到行事曆——注意報名跟繳件常常是兩個不同的日期。要細看某個競賽的簡章，回覆編號就好。',
+        nextBtn: '回到五個階段'
+    }
+};
+
+function pickMode(el) {
+    document.querySelectorAll('#mode-chips .chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    mode = el.dataset.mode;
+    const c = MODE_COPY[mode];
+    document.getElementById('mode-note').textContent = c.note;
+    document.getElementById('lbl-intent').textContent = c.intentLabel;
+    document.getElementById('lbl-loc').textContent = c.locLabel;
+    document.getElementById('next-desc').textContent = c.next;
+    const link = document.getElementById('next-link');
+    link.textContent = c.nextBtn;
+    link.href = mode === 'comp' ? '../index.html' : 'https://github.com/Wenqing950519/career-offercheck';
+    render();
+}
+
+const v = id => document.getElementById(id).value.trim();
+
+// 使用者沒填的欄位不進 prompt，也不留佔位符——留白比假資料好
+function buildPrompt() {
+    const isJob = mode === 'job';
+    const lines = [];
+
+    lines.push(`請依照這個 skill 的方法幫我找機會：${SKILL_URL}`);
+    lines.push('');
+    lines.push(`我要找的是：${isJob ? '實習／職缺' : '學生競賽'}`);
+    lines.push('');
+
+    const bg = v('f-background');
+    lines.push('我的背景與做過的事：');
+    lines.push(bg || '（還沒填，請先問我三個問題：方向、地點、目前身分）');
+    lines.push('');
+
+    const facts = [];
+    if (v('f-intent')) facts.push(`${isJob ? '想找的方向' : '想找的競賽類型'}：${v('f-intent')}`);
+    if (v('f-location')) facts.push(`${isJob ? '地點限制' : '地點或形式限制'}：${v('f-location')}`);
+    if (v('f-status')) facts.push(`我的身分：${v('f-status')}`);
+    if (v('f-hard')) facts.push(`不能妥協的硬條件：${v('f-hard')}`);
+    if (facts.length) { lines.push(...facts); lines.push(''); }
+
+    lines.push('請遵守以下規則：');
+    lines.push('1. 只列出目前還沒截止的機會，過期的直接丟掉，並告訴我丟掉幾個。查不到截止日的請標註「未確認」，要我自己去官網核對。');
+    lines.push('2. 聚合平台或搜尋結果只用來發現機會；截止日、資格這些關鍵事實請盡量回官方頁面確認，並標明每個欄位是官方確認還是聚合站來的。');
+    lines.push('3. 每一筆都要附上我點得開的連結。真的找不到合適的就直說，不要為了湊數量生一個出來。');
+    lines.push('4. 排序時，每一項的理由都要引用我上面說過的話，指出對應我哪一段經歷。不要給我適合度分數或百分比。');
+    lines.push('5. 只有硬條件和資格不符可以淘汰，偏好只影響排序。請告訴我濾掉了幾個、依據什麼規則。');
+    lines.push('6. 先列 8 到 12 個候選就好，用淺層資料即可。等我挑出有興趣的 2、3 個，你再去翻官方頁面和簡章確認細節。');
+    lines.push('');
+
+    if (isJob) {
+        lines.push('每一筆請包含：職稱、公司、地點或遠端、截止日與來源、關鍵要求、為什麼排這裡、我缺什麼、要注意什麼、連結。');
+    } else {
+        lines.push('每一筆請包含：競賽名稱、主辦單位、報名截止與繳件截止（這是兩個日期）、參賽資格、獎金、組隊人數、繳交物、為什麼排這裡、要注意什麼、官方連結。');
+    }
+    lines.push('');
+    lines.push('最後請給我一段摘要：搜尋時間、候選數量、濾掉幾個與原因、建議先看哪幾個。');
+
+    return lines.join('\n');
+}
+
+function render() {
+    const text = buildPrompt();
+    const esc = s => s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+    // 把使用者填的內容標亮，讓人看見自己的話真的進了問題裡
+    const filled = ['f-background', 'f-intent', 'f-location', 'f-status', 'f-hard']
+        .map(v).filter(s => s.length > 1)
+        .sort((a, b) => b.length - a.length);
+    let html = esc(text);
+    filled.forEach(s => {
+        const safe = esc(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        html = html.replace(new RegExp(safe, 'g'), m => `<mark>${m}</mark>`);
+    });
+    document.getElementById('preview').innerHTML = html;
+    document.getElementById('char-count').textContent = text.length + ' 字';
+}
+
+function copyPrompt() {
+    const text = buildPrompt();
+    navigator.clipboard.writeText(text)
+        .then(() => toast('已複製，貼到 ChatGPT 或 Claude 就好'))
+        .catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            toast('已複製');
+        });
+}
+
+let toastTimer;
+function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// 進度給入口頁用
+function markVisited() {
+    try {
+        const raw = JSON.parse(localStorage.getItem('ct_progress') || '{}');
+        raw.opportunity = { visited_at: Date.now() };
+        localStorage.setItem('ct_progress', JSON.stringify(raw));
+    } catch (e) { /* 隱私模式下 localStorage 可能不可用，忽略即可 */ }
+}
+
+document.querySelectorAll('#generator input, #generator textarea')
+    .forEach(el => el.addEventListener('input', render));
+render();
+markVisited();
+</script>
+</body>
+</html>
