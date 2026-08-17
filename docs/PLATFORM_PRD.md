@@ -87,16 +87,31 @@ lisheng.cv/career-tools（統一入口，靜態）
 
 ## 7. 上線順序
 
-| 波次 | 內容 | 依賴 |
-|---|---|---|
-| Wave 1 | resume-composer 履歷 HTML 打通（匯入 + 繁化 + 下一步導引） | 無，renderer 已存在 |
-| Wave 2 | opportunity-catch skill 上線 | 無 |
-| Wave 3 | 入口頁改版為五階段路徑，掛上 1-5（skill-gap 掛 v0） | Wave 1、2 |
-| Wave 4 | skill-gap v0（prompt 產生器 + 能力地圖前端渲染） | 無後端 |
-| Wave 5 | skill-gap v1（LLM API + Google 登入 + DB） | Wave 4 驗證有人走到這一步 |
-| 平行 | 爬蟲 v2 專案（獨立 repo，獨立時程） | 不擋任何 Wave |
+| 波次 | 內容 | 依賴 | 狀態 |
+|---|---|---|---|
+| Wave 1 | resume-composer 履歷 HTML 打通（匯入 + 繁化 + 下一步導引） | 無，renderer 已存在 | ✅ 完成 |
+| Wave 2 | opportunity-catch 上線頁（prompt 產生器） | 無 | |
+| Wave 3 | 入口頁改版為五階段路徑，掛上 1-5（skill-gap 掛 v0） | Wave 1、2 | |
+| Wave 4 | skill-gap v0（prompt 產生器 + 能力地圖前端渲染） | 無後端 | |
+| Wave 5 | skill-gap v1（LLM API + Google 登入 + DB） | Wave 4 | |
+| Wave 6 | 獨立專案：競賽 feed 服務 | 不擋前五波 | |
+| Wave 7 | 獨立專案：職缺 feed 服務 | Wave 6 的架構可複用 | |
+| Wave 8 | **對外發布** | 前七波 | |
+| Wave 9 | **內容分發**（before/after 對照素材、社群測水溫） | Wave 8 | |
 
-**Wave 1-4 全部零後端。Wave 3 完成即可對外發布整套平台。**
+**Wave 1–4 全部零後端。**
+
+### 關於發布時機的取捨（刻意決定，非疏漏）
+
+本專案選擇**全部功能完成後才對外發布**，而不是 Wave 3 完成即發布。
+
+代價要寫清楚，之後回頭看才知道當初知情：
+
+- Wave 5（skill-gap v1，唯一的重架構）將在**沒有任何真實使用數據**的情況下開工，原本設計的 v0 轉換率門檻無法評估。
+- Wave 6、7 的爬蟲服務同樣在無使用者驗證下投入，而它們是全專案唯一有**持續維運成本**的部分。
+- 產品假設要到 Wave 8 才第一次接觸真實使用者。
+
+採用此順序的前提是：發布時的完整度本身就是目標（作品集與口碑的一次性印象），而非最小化驗證成本。
 
 ## 8. 成功指標
 
