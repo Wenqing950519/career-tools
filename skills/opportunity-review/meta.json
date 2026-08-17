@@ -1,0 +1,10 @@
+{
+  "id": "opportunity-review",
+  "label_zh": "評機會",
+  "compute_tier": "instant",
+  "requires": { "web_search": false, "multi_turn": false, "code_execution": false },
+  "reads": ["profile", "directions", "experiences", "opportunities"],
+  "writes": ["opportunities"],
+  "platforms": { "web": true, "custom_gpt": true, "claude_skill": true, "claude_code": true },
+  "est_tokens": 5000
+}

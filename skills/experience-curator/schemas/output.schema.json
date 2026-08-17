@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://career-town.example/skills/experience-curator/output.schema.json",
+  "title": "Experience Curator Record Data",
+  "description": "Exchange schema derived from the canonical Experience and EvidenceSections record shapes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "raw_text",
+    "summary",
+    "skills",
+    "resume_text",
+    "confirmation_status",
+    "created_at",
+    "sections"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "raw_text": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "skills": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "resume_text": { "type": "string", "minLength": 1 },
+    "confirmation_status": { "const": "pending" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "source": { "type": "string" },
+    "relative_path": { "type": "string" },
+    "sections": { "$ref": "#/$defs/evidenceSections" }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "evidenceSections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["background", "actions", "results", "contribution", "unknowns"],
+      "properties": {
+        "background": { "$ref": "#/$defs/stringList" },
+        "actions": { "$ref": "#/$defs/stringList" },
+        "results": { "$ref": "#/$defs/stringList" },
+        "contribution": { "$ref": "#/$defs/stringList" },
+        "unknowns": { "$ref": "#/$defs/stringList" }
+      }
+    }
+  }
+}

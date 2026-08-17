@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://career-town.example/skills/direction-explorer/output.schema.json",
+  "title": "Direction Explorer Record Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "status", "attention", "reasons", "related_skills", "related_experiences", "recent_change", "updated_at"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "status": { "const": "observing" },
+    "attention": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "reasons": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 1 } },
+    "related_skills": { "type": "array", "items": { "type": "string" } },
+    "related_experiences": { "type": "array", "items": { "type": "string" } },
+    "recent_change": { "type": "string", "minLength": 1 },
+    "updated_at": { "type": "string", "format": "date-time" }
+  }
+}

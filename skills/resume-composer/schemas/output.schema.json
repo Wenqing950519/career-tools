@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://career-town.example/skills/resume-composer/output.schema.json",
+  "title": "Resume Composer Record Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["photo", "name", "birthDate", "phone", "politicalStatus", "email", "city", "certifications", "skills", "hobbies", "education", "experiences"],
+  "properties": {
+    "photo": { "$ref": "#/$defs/nullableString" },
+    "name": { "$ref": "#/$defs/nullableString" },
+    "birthDate": { "$ref": "#/$defs/nullableString" },
+    "phone": { "$ref": "#/$defs/nullableString" },
+    "politicalStatus": { "$ref": "#/$defs/nullableString" },
+    "email": { "$ref": "#/$defs/nullableString" },
+    "city": { "$ref": "#/$defs/nullableString" },
+    "certifications": { "$ref": "#/$defs/nullableString" },
+    "skills": { "$ref": "#/$defs/nullableString" },
+    "hobbies": { "$ref": "#/$defs/nullableString" },
+    "education": { "type": "array", "items": { "$ref": "#/$defs/education" } },
+    "experiences": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/experience" } }
+  },
+  "$defs": {
+    "nullableString": { "type": ["string", "null"] },
+    "education": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["school", "major", "degree", "time", "details"],
+      "properties": {
+        "school": { "$ref": "#/$defs/nullableString" },
+        "major": { "$ref": "#/$defs/nullableString" },
+        "degree": { "$ref": "#/$defs/nullableString" },
+        "time": { "$ref": "#/$defs/nullableString" },
+        "details": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "experience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["category", "title", "role", "time", "details", "sourceId"],
+      "properties": {
+        "category": { "enum": ["實習經歷", "實踐經歷", "校園經歷"] },
+        "title": { "$ref": "#/$defs/nullableString" },
+        "role": { "$ref": "#/$defs/nullableString" },
+        "time": { "$ref": "#/$defs/nullableString" },
+        "details": { "type": "string", "minLength": 1 },
+        "sourceId": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

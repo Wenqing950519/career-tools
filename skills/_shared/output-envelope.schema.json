@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://career-town.example/schemas/output-envelope.schema.json",
+  "title": "Career Town Skill Output Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "skill", "generated_at", "records", "unknowns"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "skill": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "status", "data"],
+        "properties": {
+          "type": { "type": "string", "minLength": 1 },
+          "status": { "const": "pending" },
+          "data": { "type": "object" }
+        }
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    }
+  }
+}

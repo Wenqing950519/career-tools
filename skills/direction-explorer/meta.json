@@ -1,0 +1,10 @@
+{
+  "id": "direction-explorer",
+  "label_zh": "挖方向",
+  "compute_tier": "instant",
+  "requires": { "web_search": false, "multi_turn": false, "code_execution": false },
+  "reads": ["profile", "directions"],
+  "writes": ["directions"],
+  "platforms": { "web": true, "custom_gpt": true, "claude_skill": true, "claude_code": true },
+  "est_tokens": 4000
+}

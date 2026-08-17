@@ -1,0 +1,10 @@
+{
+  "id": "interview-story",
+  "label_zh": "說故事",
+  "compute_tier": "instant",
+  "requires": { "web_search": false, "multi_turn": false, "code_execution": false },
+  "reads": ["profile", "experiences"],
+  "writes": ["interview_stories"],
+  "platforms": { "web": true, "custom_gpt": true, "claude_skill": true, "claude_code": true },
+  "est_tokens": 4000
+}
