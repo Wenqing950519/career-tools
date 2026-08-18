@@ -15,7 +15,7 @@
 | 階段 | 你的處境 | 產品 | 在哪裡 |
 | --- | --- | --- | --- |
 | ① 我是誰 | 「我大三了，還不知道自己想做什麼」 | 小測驗 | 網頁 |
-| ② 我有什麼 | 「我大概知道方向，但不知道自己有什麼」 | 找差距 | [career-skill-gap](https://github.com/Wenqing950519/career-skill-gap) |
+| ② 我有什麼 | 「我大概知道方向，但不知道自己有什麼」 | 找差距 | [skillmap.lisheng.cv](https://skillmap.lisheng.cv) ＋ [career-skill-gap](https://github.com/Wenqing950519/career-skill-gap) |
 | ③ 怎麼寫出來 | 「我做過一些事，但不會寫成履歷」 | 打履歷 | [career-resume-composer](https://github.com/Wenqing950519/career-resume-composer) ＋ [`apps/resume`](apps/resume) |
 | ④ 投哪裡 | 「履歷有了，我要去哪找實習／競賽」 | 抓機會 | [career-opportunity-catch](https://github.com/Wenqing950519/career-opportunity-catch) |
 | ⑤ 該不該去 | 「我拿到 offer 了，該去嗎，還是快逃」 | 選 offer | [career-offercheck](https://github.com/Wenqing950519/career-offercheck) |
@@ -45,10 +45,21 @@ contracts/
 ├─ round-trip.md              skill 回應與匯入的交換契約
 └─ output-envelope.schema.json
 apps/
+├─ index.html            入口頁：五階段路徑
+├─ shared/platform.css   共用樣式
+├─ opportunity-catch/    抓機會的 prompt 產生器
 └─ resume/               履歷生成器網頁（單檔，可離線使用）
 ```
 
+**這個 repo 零後端、零建置**：下載下來用瀏覽器打開就能跑。唯一需要後端的第 ② 步已經獨立成 [skillmap](https://github.com/Wenqing950519/skillmap)，跑在自己的子網域上。
+
 想了解整套設計，從 [`docs/PLATFORM_PRD.md`](docs/PLATFORM_PRD.md) 開始。
+
+## 能力地圖
+
+搬到自己的 repo 與子網域了：**[skillmap.lisheng.cv](https://skillmap.lisheng.cv)**（原始碼：[skillmap](https://github.com/Wenqing950519/skillmap)）。
+
+它是全平台唯一有後端的產品——Google 登入、資料庫、LLM API proxy 都在那邊，所以不放在這個純靜態的總庫裡。不用登入的複製貼上版也在同一個站上，是登入版的永久降級路徑。
 
 ## 履歷生成器
 

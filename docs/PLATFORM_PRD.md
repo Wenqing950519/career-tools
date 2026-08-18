@@ -58,8 +58,9 @@
 lisheng.cv/career-tools（統一入口，靜態）
 │
 ├─ ① career-test        純 HTML（已有，quiz + 結果頁）
-├─ ② skill-gap          v0: 靜態頁 + prompt 產生器 + 貼回渲染（零後端）
-│                        v1: Next.js + LLM API + Google OAuth + DB（唯一重架構）
+├─ ② skill-gap          獨立 repo 與子網域 skillmap.lisheng.cv（唯一有後端的產品）
+│                        v0: 靜態頁 + prompt 產生器 + 貼回渲染（零後端）
+│                        v1: 靜態頁 + Supabase（Postgres + Google OAuth）+ Edge Function LLM proxy
 ├─ ③ resume-composer    skill（GitHub raw 觸發）+ 履歷 HTML（單檔，localStorage）
 ├─ ④ opportunity-catch  skill（跑在使用者自己的 Claude/ChatGPT，用其 web search）
 └─ ⑤ offercheck         skill（已完成，含 HTML 報告）
@@ -93,13 +94,17 @@ lisheng.cv/career-tools（統一入口，靜態）
 | Wave 2 | opportunity-catch 上線頁（prompt 產生器） | 無 | ✅ 完成 |
 | Wave 3 | 入口頁改版為五階段路徑，掛上 1-5（skill-gap 掛 v0） | Wave 1、2 | ✅ 完成 |
 | Wave 4 | skill-gap v0（prompt 產生器 + 能力地圖前端渲染） | 無後端 | ✅ 完成 |
-| Wave 5 | skill-gap v1（LLM API + Google 登入 + DB） | Wave 4 | |
+| Wave 5 | skill-gap v1（LLM API + Google 登入 + DB） | Wave 4 | ✅ 完成 |
 | Wave 6 | 獨立專案：競賽 feed 服務 | 不擋前五波 | |
 | Wave 7 | 獨立專案：職缺 feed 服務 | Wave 6 的架構可複用 | |
 | Wave 8 | **對外發布** | 前七波 | |
 | Wave 9 | **內容分發**（before/after 對照素材、社群測水溫） | Wave 8 | |
 
-**Wave 1–4 全部零後端。**
+**Wave 1–4 全部零後端。Wave 5 是全平台唯一一段有後端的程式，而且 v0 永遠保留**——額度用完、API 掛掉、預算超標時，v1 一律把人接回 v0，不白屏也不噴錯。
+
+v1 沒有照原先建議的 Next.js 走，改成沿用 v0 的靜態頁 + Supabase Edge Function。理由是這個產品需要後端的地方只有兩處（藏 LLM key、跨裝置保存），多一套建置流程只會多一個要維運的東西；右側地圖與解析器因此能與 v0 共用同一份程式碼。
+
+完成後整包（v0 + v1 + 後端）移到獨立 repo [skillmap](https://github.com/Wenqing950519/skillmap) 與子網域 `skillmap.lisheng.cv`，讓本總庫回到零後端、零建置。入口頁第 ② 步改為外連，與第 ① 步 career-test 相同處理。
 
 ### 關於發布時機的取捨（刻意決定，非疏漏）
 

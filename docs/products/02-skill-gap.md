@@ -1,6 +1,7 @@
 # ② skill-gap — 能力地圖
 
 **形態**：Web app，分兩期：v0 零後端 → v1 LLM API + Google 登入 + 獨立資料庫
+**位置**：獨立 repo [skillmap](https://github.com/Wenqing950519/skillmap)，跑在 `skillmap.lisheng.cv`（全平台唯一有後端，故不放在總庫）
 **階段**：我有什麼／缺什麼 ／「我大概知道方向，但不知道自己現在有什麼」
 **架構重量**：v0 零後端；v1 是**全平台唯一的重架構產品**，也是唯一的留存機制
 **UI 基底**：繼承 career-town 既有能力地圖 UI（列表卡 + 單卡 modal），本文件 §UI 為準
@@ -141,11 +142,25 @@
 | 版本快照 | 每次更新留快照，呈現「三個月來的變化」——第二個可截圖資產 |
 | 想加強追蹤 | 3 項行動可勾選完成 → 引導回填佐證 → 升精熟度（升級動畫值得做，這是留存的獎勵時刻） |
 
-### 技術棧（建議）
+### 技術棧（實作結果）
 
-- Next.js（沿用 career-test 既有棧）+ Cloudflare Pages/Workers（已有 wrangler 經驗）
-- DB：Supabase（Google OAuth 現成）或 Cloudflare D1
-- LLM：Haiku 級即可；API key 走後端 proxy，前端永不見 key
+原本建議 Next.js + Cloudflare，實作時改成**沿用 v0 的靜態頁**：
+
+- 前端：`v1.html`，與 v0 共用 `shared/skill-map.{css,js}`（精熟度定義、解析器、統計、排序、交接文字塊只有一份）
+- 後端：Supabase Postgres + Google OAuth + 兩個 Edge Function（`api/`）
+- LLM：DeepSeek（OpenAI 相容介面，只用 `/chat/completions`）；API key 只存在 Edge Function，前端永不見 key。換供應商只要改環境變數，不動程式碼
+
+改的理由：這個產品需要後端的只有「藏 key」與「跨裝置保存」兩件事，多一套建置流程只會多一個要維運的東西。共用同一份解析器也讓 v0 的降級路徑不會因為兩邊格式漂移而失效。
+
+### 前後端的職責切分
+
+| 事情 | 在哪裡做 | 為什麼 |
+|---|---|---|
+| 對話與資源生成 | Edge Function | key 不能進瀏覽器 |
+| 每日額度 | Postgres RPC（`consume_quota`） | 讀取與遞增要原子，否則兩個分頁能超額 |
+| 想加強上限 3 項 | Postgres trigger | 前端擋得住手滑，擋不住兩個分頁 |
+| 資料隔離 | RLS 鎖 `auth.uid()` | 應用層有一天會忘記過濾，資料庫不會 |
+| 卡片解析 | 前端（與 v0 同一份） | 降級時要能無縫接回複製貼上模式 |
 
 ### 資料模型（最小）
 
@@ -166,6 +181,10 @@ map_snapshots(id, map_id, payload_json, created_at)
 - 每帳號每日 LLM 呼叫上限（建議 20 次）；「想加強」資源生成計入
 - 單次對話 token 上限；超過引導回 v0 複製貼上模式
 - 月度 API 預算告警，超過即全站降級 v0 模式——**v0 永遠保留，它就是 v1 的 fallback**
+
+### v1 的降級行為（實作）
+
+Edge Function 的每個錯誤都帶 `fallback: "v0"`：額度用完、對話過長、LLM 無回應、額度服務連不上，前端一律顯示一段說明並給「用複製貼上版繼續」的按鈕，已入庫的卡片不受影響。`shared/config.js` 沒填 Supabase 位址時（含刻意清空以停用 v1 的情況），v1 頁面直接顯示降級提示，不會白屏或一直轉圈。
 
 ### v1 驗收
 
