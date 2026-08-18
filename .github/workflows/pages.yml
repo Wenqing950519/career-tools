@@ -1,0 +1,35 @@
+# 把 apps/ 發佈到 GitHub Pages。
+#
+# Pages 內建的選項只認 repo 根目錄或 /docs，我們的網站在 apps/，
+# 所以改用 workflow 上傳指定資料夾。Cloudflare 之後接在 Pages 前面即可。
+name: Deploy web to Pages
+
+on:
+  push:
+    branches: [master]
+    paths: ['apps/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -6,7 +6,7 @@
 
 不用安裝、不用註冊、會複製貼上就會用。
 
-這個 repo 是**平台總庫**：產品規格、共用契約與網頁應用。四個 skill 各自獨立在自己的 repo。
+這個 repo 是**平台總庫**：產品規格、共用契約、入口頁與平台自己的接口頁。有自己服務的產品（能力地圖、履歷生成器、小測驗）各自獨立在自己的 repo 與網域。
 
 ---
 
@@ -14,9 +14,9 @@
 
 | 階段 | 你的處境 | 產品 | 在哪裡 |
 | --- | --- | --- | --- |
-| ① 我是誰 | 「我大三了，還不知道自己想做什麼」 | 小測驗 | 網頁 |
-| ② 我有什麼 | 「我大概知道方向，但不知道自己有什麼」 | 找差距 | [skillmap.lisheng.cv](https://skillmap.lisheng.cv) ＋ [career-skill-gap](https://github.com/Wenqing950519/career-skill-gap) |
-| ③ 怎麼寫出來 | 「我做過一些事，但不會寫成履歷」 | 打履歷 | [career-resume-composer](https://github.com/Wenqing950519/career-resume-composer) ＋ [`apps/resume`](apps/resume) |
+| ① 我是誰 | 「我大三了，還不知道自己想做什麼」 | 小測驗 | [career-test](https://github.com/Wenqing950519/career-test)（純網頁） |
+| ② 我有什麼 | 「我大概知道方向，但不知道自己有什麼」 | 找差距 | [skillmap](https://github.com/Wenqing950519/skillmap)（skill + 網頁 + 後端） |
+| ③ 怎麼寫出來 | 「我做過一些事，但不會寫成履歷」 | 打履歷 | [career-resume-composer](https://github.com/Wenqing950519/career-resume-composer)（skill + 網頁） |
 | ④ 投哪裡 | 「履歷有了，我要去哪找實習／競賽」 | 抓機會 | [career-opportunity-catch](https://github.com/Wenqing950519/career-opportunity-catch) |
 | ⑤ 該不該去 | 「我拿到 offer 了，該去嗎，還是快逃」 | 選 offer | [career-offercheck](https://github.com/Wenqing950519/career-offercheck) |
 
@@ -47,8 +47,7 @@ contracts/
 apps/
 ├─ index.html            入口頁：五階段路徑
 ├─ shared/platform.css   共用樣式
-├─ opportunity-catch/    抓機會的 prompt 產生器
-└─ resume/               履歷生成器網頁（單檔，可離線使用）
+└─ opportunity-catch/    抓機會的 prompt 產生器
 ```
 
 **這個 repo 零後端、零建置**：下載下來用瀏覽器打開就能跑。唯一需要後端的第 ② 步已經獨立成 [skillmap](https://github.com/Wenqing950519/skillmap)，跑在自己的子網域上。
@@ -57,17 +56,15 @@ apps/
 
 ## 能力地圖
 
-搬到自己的 repo 與子網域了：**[skillmap.lisheng.cv](https://skillmap.lisheng.cv)**（原始碼：[skillmap](https://github.com/Wenqing950519/skillmap)）。
+搬到 [skillmap](https://github.com/Wenqing950519/skillmap) 了，skill 與服務在同一個 repo 的 `skill/` 與 `web/`。
 
 它是全平台唯一有後端的產品——Google 登入、資料庫、LLM API proxy 都在那邊，所以不放在這個純靜態的總庫裡。不用登入的複製貼上版也在同一個站上，是登入版的永久降級路徑。
 
 ## 履歷生成器
 
-[`apps/resume/index.html`](apps/resume/index.html) 是單一檔案，直接用瀏覽器開就能用，資料只存在你自己的瀏覽器裡。
+搬到 [career-resume-composer](https://github.com/Wenqing950519/career-resume-composer) 了，skill 與網頁在同一個 repo 的 `skill/` 與 `web/`。
 
-它接上第 ③ 步的打履歷 Skill：跟 AI 聊完之後，把整段回覆貼進「從 AI 匯入」，表單會自動填好。貼進去的內容格式亂掉也沒關係，解析器會盡量挖，挖不到會把原文排好給你手動填，不會白屏。
-
-`convert_tw.py` 是簡轉繁的轉換腳本，可重複執行，帶有守衛檢查（會擋下破壞儲存鍵或經歷分類列舉值的轉換）。
+界線是這樣定的：**產品的網頁跟著它的 skill 走，平台只留自己的接口。** 抓機會頁留在這裡，因為它沒有自己的狀態——沒有後端、沒有建置流程、沒有自己的網域，只是把 skill 的問法包成一張表單。
 
 ---
 

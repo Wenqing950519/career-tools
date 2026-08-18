@@ -2,7 +2,7 @@
 
 **形態**：純 skill（貼到任何 LLM 觸發）＋ 單頁履歷 HTML（自訂版面、匯出 PDF）
 **階段**：怎麼寫出來 ／「我做過一些事，但不會寫成履歷」
-**架構重量**：零後端。實作於 [`apps/resume/index.html`](../../apps/resume/index.html)
+**架構重量**：零後端。實作於 [career-resume-composer 的 `web/index.html`](https://github.com/Wenqing950519/career-resume-composer/blob/master/web/index.html)
 
 ## 目的
 
